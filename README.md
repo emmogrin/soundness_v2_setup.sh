@@ -32,7 +32,8 @@ soundness-cli generate-key --name my-key
    source /root/.bashrc
 ```
 
-6.  Proceed with.
+6.  Proceed fully and copy 24 phrases. for secret key password enter (1234)
+   
    ```bash
 soundnessup install && soundnessup update
 soundness-cli generate-key --name my-key
