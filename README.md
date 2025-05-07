@@ -27,7 +27,19 @@ soundnessup install && \
 soundnessup update && \
 soundness-cli generate-key --name my-key
 ```
-5. To export your private key:
+5. Reload shell environment
+ ```bash
+   source /root/.bashrc
+```
+
+6.  Proceed with.
+   ```bash
+soundnessup install && soundnessup update
+soundness-cli generate-key --name my-key
+```
+
+
+7. To export your private key:
 ```bash
 soundness-cli export-key --name my-key
 ```
