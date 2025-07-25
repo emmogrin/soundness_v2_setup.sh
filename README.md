@@ -61,6 +61,8 @@ soundnessup install && soundnessup update
 soundness-cli generate-key --name my-key
 ```
 
+
+[![20250725-085752.jpg](https://i.postimg.cc/Kvm3sCWg/20250725-085752.jpg)](https://postimg.cc/23X519rz)
 ---
 
 ✅ Like & follow on X (Twitter) — @admirkhen
