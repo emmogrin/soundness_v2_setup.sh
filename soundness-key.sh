@@ -3,7 +3,7 @@
 clear
 echo "╔════════════════════════════════════════════════════════════╗"
 echo "║     🚀 Soundness Node Key Setup Script by @admirkhen       ║"
-echo "║    Automates installation, keygen & optional file hosting  ║"
+echo "║    Automates installation, keygen & optional file viewing  ║"
 echo "╚════════════════════════════════════════════════════════════╝"
 echo ""
 echo "📱 Where are you running this script?"
@@ -55,48 +55,23 @@ if [ ! -f "$KEY_PATH" ]; then
     exit 1
 fi
 
-# 🌍 Ask to serve key for download
+# 🌍 Ask to host content
 echo ""
-read -p "📦 Do you want to download key_store.json from http://localhost:8080? [y/N]: " HOST_CHOICE
+read -p "🌐 Do you want to view key_store.json at http://localhost:8080? [y/N]: " HOST_CHOICE
 
 if [[ "$HOST_CHOICE" == "y" || "$HOST_CHOICE" == "Y" ]]; then
-    echo "🌐 Hosting key for download at http://localhost:8080/key_store.json"
-    echo "📥 Open this in your browser and it will force download"
-    echo "✅ Press CTRL+C after saving the file."
-
-    python3 - <<EOF
-import http.server
-import socketserver
-
-PORT = 8080
-KEY_FILE = "$KEY_PATH"
-
-class ForcedDownloadHandler(http.server.SimpleHTTPRequestHandler):
-    def do_GET(self):
-        if self.path == "/key_store.json":
-            self.send_response(200)
-            self.send_header("Content-Type", "application/octet-stream")
-            self.send_header("Content-Disposition", "attachment; filename=key_store.json")
-            self.end_headers()
-            with open(KEY_FILE, "rb") as f:
-                self.wfile.write(f.read())
-        else:
-            self.send_response(404)
-            self.end_headers()
-
-with socketserver.TCPServer(("", PORT), ForcedDownloadHandler) as httpd:
-    print(f"🔒 Serving on port {PORT}...")
-    httpd.serve_forever()
-EOF
-
+    cd "$(dirname "$KEY_PATH")"
+    echo "🌐 Hosting key_store.json at: http://localhost:8080/key_store.json"
+    echo "📋 You can open it in a browser or curl to copy it safely."
+    echo "✅ Press CTRL+C after copying."
+    python3 -m http.server 8080
 else
-    echo "✅ Skipped hosting. Your key is saved at:"
+    echo "✅ Skipped hosting. You can find your key at:"
     echo "$KEY_PATH"
 fi
 
-# ✅ Done
 echo ""
 echo "🎉 Setup completed!"
-echo "🔑 To export your private key later: soundness-cli export-key --name $KEY_NAME"
+echo "🔑 To export private key later: soundness-cli export-key --name $KEY_NAME"
 echo "🛡️ Remember to backup your 24-word seed phrase and key_store.json safely."
 echo "✨ Script by @admirkhen - https://twitter.com/admirkhen"
