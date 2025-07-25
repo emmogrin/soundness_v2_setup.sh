@@ -38,6 +38,13 @@ Never share your private key or mnemonic.
 Scripts are beginner-friendly but assume basic Linux usage.
 
 
+now to send proofs onchain paths
+```
+echo 'export PATH="$HOME/.soundnessup/bin:$PATH"' >> ~/.bashrc
+source ~/.bashrc
+```
+
+
 
 ---
 
