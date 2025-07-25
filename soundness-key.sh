@@ -31,15 +31,27 @@ fi
 
 # 🦀 Install Rust
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
-source $HOME/.cargo/env
+[ -f "$HOME/.cargo/env" ] && source "$HOME/.cargo/env"
 
 # 📥 Install Soundness CLI
 curl -sSL https://raw.githubusercontent.com/soundnesslabs/soundness-layer/main/soundnessup/install | bash
 export PATH="$HOME/.soundnessup/bin:$PATH"
-source ~/.bashrc || true
 
-# 🛠️ Install and update
+# 🔁 Ensure environment is fully loaded
+[ -f "$HOME/.cargo/env" ] && source "$HOME/.cargo/env"
+[ -f "$HOME/.bashrc" ] && source "$HOME/.bashrc"
+sleep 1
+
+# 🛠️ Install and update CLI
 soundnessup install && soundnessup update
+
+# ⛑️ Retry sourcing if CLI not found
+if ! command -v soundness-cli >/dev/null; then
+    echo "⚠️  soundness-cli not found in PATH — retrying source..."
+    [ -f "$HOME/.cargo/env" ] && source "$HOME/.cargo/env"
+    [ -f "$HOME/.bashrc" ] && source "$HOME/.bashrc"
+    sleep 1
+fi
 
 # 🔐 Key generation
 echo ""
@@ -72,6 +84,6 @@ fi
 
 echo ""
 echo "🎉 Setup completed!"
-echo "🔑 To export private key later(this is no longer functional too lazy to delete): soundness-cli export-key --name $KEY_NAME"
+echo "🔑 To export private key later (not functional currently): soundness-cli export-key --name $KEY_NAME"
 echo "🛡️ Remember to backup your 24-word seed phrase and key_store.json safely."
 echo "✨ Script by @admirkhen - https://twitter.com/admirkhen"
