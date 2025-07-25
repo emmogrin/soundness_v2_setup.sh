@@ -1,12 +1,28 @@
-here's how to proceed with the Soundness Testnet.
-first head over to soundness cockpit https://discord.com/channels/1341336526713257984/1352604755712671814 and switch your key (only applies to the onboarded)
-if you need a guide to generate a new one both on phone and pc use this
+## 🧪 How to Proceed with the Soundness Testnet
 
-once done with that chat with the game bot as its crucial so you get responded to. the steps to do that are here 
-https://discord.com/channels/1341336526713257984/1355215697763893446
+### 1️⃣ Switch Your Key  
+Head over to the Soundness Cockpit to switch your key (only applies to the already onboarded users):  
+👉 [🔗 Soundness Cockpit Channel](https://discord.com/channels/1341336526713257984/1352604755712671814)
 
-next head over to play the game in this channel, https://discord.com/channels/1341336526713257984/1391039818988916768 you will be redirected to the site of the game, you can use this patern
+If you need a guide to generate a new key on **phone or PC**, use this step-by-step resource:  
+📖 [🛠️ Key Generation Guide (Phone + PC)](https://github.com/emmogrin/soundness_v2_setup.sh/blob/main/README.md)
 
+---
+
+### 2️⃣ Chat with the Game Bot (Required)  
+Once your key is set, you **must** DM the game bot to get verified.  
+Follow these instructions:  
+🤖 [🤖 Game Bot Instructions](https://discord.com/channels/1341336526713257984/1355215697763893446)
+
+---
+
+### 3️⃣ Play the Game  
+Go to the game channel to start solving the queen puzzle:  
+🎮 [🎮 Game Channel](https://discord.com/channels/1341336526713257984/1391039818988916768)
+
+Use this solution pattern to win:
+
+```
 8 | . . . . Q . . .
 7 | . . . . . . Q .
 6 | . . . Q . . . .
@@ -16,16 +32,32 @@ next head over to play the game in this channel, https://discord.com/channels/13
 2 | Q . . . . . . .
 1 | . . Q . . . . .
     A B C D E F G H
+```
 
-now after you win head over to the bot you dmed Initially and and click on generate ligero proofs😁
-you will see something like this 
+---
 
-when thats done it takes a while.
-you will see it show you a 5 to 6 line code to copy as displayed here 
+### 4️⃣ Generate Ligero Proofs  
+Once you win, go back to the **bot you DMed initially** and click on  
+✅ **"Generate Ligero Proofs"**
 
+You will get a 5–6 line code like this:  
+🖼️ [🖼️ Sample Ligero Proof Output 1](https://postimg.cc/Bt8XJC3d)  
+🖼️ [🖼️ Sample Ligero Proof Output 2](https://postimg.cc/dDQgCW3x)
 
-all you need to do is simple : that part is say <your-key-name> delete it all with the <> and within the same space it occupies enter your key name for those that use my guide previously your key name is simply  my-key 
+📌 Replace the `<your-key-name>` section with your actual key name.  
+> For those using my setup guide, your key is usually `my-key`.
 
-once you have done that head over to your ubuntu terminal which you have opened and paste the full code block. then press enter and boom your are done but yoi will keep repeating  the process so you rank up tye leader board.
+---
 
-and for those that just changed their pubkeys in the cockpit you'll see something like this but fear not the mod assured that its temporal and it doesn't affect yoir OG ROLE
+### 5️⃣ Paste & Run in Ubuntu  
+Open your **Ubuntu terminal**, paste the full code block, and press **Enter**.  
+It should look like this once completed:  
+📸 [📸 Screenshot of Terminal Output](https://postimg.cc/9zVwY9HS)
+
+---
+
+### ⚠️ Note for Key Switchers  
+If you just switched your public key, you may see a message like this:  
+📸 [📸 Cockpit Key Change Screenshot](https://postimg.cc/KkYSmQgw)
+
+Don’t worry — this is temporary. The mods confirmed it **doesn’t affect your OG role**.
