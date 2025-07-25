@@ -7,7 +7,7 @@ SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 # 🎨 Banner
 echo -e "╔════════════════════════════════════════════════════════════╗"
 echo -e "║     🚀 \e[1mSoundness Node Key Setup Script by @admirkhen\e[0m       ║"
-echo -e "║    Automates install, keygen & serves key_store.json file  ║"
+echo -e "║    Automates install and keygen to produce key_store.json  ║"
 echo -e "╚════════════════════════════════════════════════════════════╝"
 echo ""
 
@@ -48,7 +48,7 @@ export PATH="$HOME/.soundnessup/bin:$PATH"
 echo 'export PATH="$HOME/.soundnessup/bin:$PATH"' >> "$HOME/.bashrc"
 source "$HOME/.bashrc"
 
-# 🛠️ Install & Update soundness-cli
+# 🔄 Install & update CLI
 echo -e "\n🔄 Running: soundnessup install & update..."
 soundnessup install && soundnessup update
 
@@ -60,8 +60,8 @@ echo -e "\n🔐 Generating key with name: \e[1m$KEY_NAME\e[0m"
 cd "$SCRIPT_DIR"
 soundness-cli generate-key --name "$KEY_NAME"
 
-# ✅ Look for the key in current directory
-KEY_PATH="$SCRIPT_DIR/${KEY_NAME}_key_store.json"
+# ✅ Verify key_store.json exists
+KEY_PATH="$SCRIPT_DIR/key_store.json"
 if [ ! -f "$KEY_PATH" ]; then
     echo -e "\n❌ \e[1mERROR:\e[0m key_store.json not found at:"
     echo -e "\e[33m$KEY_PATH\e[0m"
@@ -69,19 +69,9 @@ if [ ! -f "$KEY_PATH" ]; then
     exit 1
 fi
 
-# 🌍 Host key if desired
-echo ""
-read -p "🌐 Do you want to serve key_store.json at http://localhost:8080? [y/N]: " HOST_CHOICE
-
-if [[ "$HOST_CHOICE" == "y" || "$HOST_CHOICE" == "Y" ]]; then
-    echo -e "\n🌐 Hosting \e[32m$KEY_PATH\e[0m at: http://localhost:8080"
-    echo -e "📋 Press CTRL+C after copying the key."
-    cd "$SCRIPT_DIR"
-    python3 -m http.server 8080
-else
-    echo -e "\n✅ Key generated at:"
-    echo -e "\e[32m$KEY_PATH\e[0m"
-fi
+# ✅ Final message
+echo -e "\n✅ Key generated successfully at:"
+echo -e "\e[32m$KEY_PATH\e[0m"
 
 echo ""
 echo -e "🎉 \e[1mDONE!\e[0m Script by \e[36m@admirkhen\e[0m"
