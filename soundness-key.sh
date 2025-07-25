@@ -1,11 +1,13 @@
 #!/bin/bash
 
-clear
+# 🎨 Banner
 echo "╔════════════════════════════════════════════════════════════╗"
 echo "║     🚀 Soundness Node Key Setup Script by @admirkhen       ║"
 echo "║    Automates installation, keygen & optional file viewing  ║"
 echo "╚════════════════════════════════════════════════════════════╝"
 echo ""
+
+# 🔍 Ask device type
 echo "📱 Where are you running this script?"
 echo "1️⃣ Laptop / VPS (with sudo)"
 echo "2️⃣ Phone / Termux (without sudo)"
@@ -31,44 +33,41 @@ fi
 
 # 🦀 Install Rust
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
-[ -f "$HOME/.cargo/env" ] && source "$HOME/.cargo/env"
+source "$HOME/.cargo/env"
 
 # 📥 Install Soundness CLI
 curl -sSL https://raw.githubusercontent.com/soundnesslabs/soundness-layer/main/soundnessup/install | bash
+
+# ➕ Add soundnessup to PATH
 export PATH="$HOME/.soundnessup/bin:$PATH"
+echo 'export PATH="$HOME/.soundnessup/bin:$PATH"' >> "$HOME/.bashrc"
+source "$HOME/.bashrc"
 
-# 🔁 Ensure environment is fully loaded
-[ -f "$HOME/.cargo/env" ] && source "$HOME/.cargo/env"
-[ -f "$HOME/.bashrc" ] && source "$HOME/.bashrc"
-sleep 1
-
-# 🛠️ Install and update CLI
+# 🛠️ Install & Update soundness-cli
 soundnessup install && soundnessup update
 
-# ⛑️ Retry sourcing if CLI not found
+# 🧪 Validate CLI install
 if ! command -v soundness-cli >/dev/null; then
-    echo "⚠️  soundness-cli not found in PATH — retrying source..."
-    [ -f "$HOME/.cargo/env" ] && source "$HOME/.cargo/env"
-    [ -f "$HOME/.bashrc" ] && source "$HOME/.bashrc"
-    sleep 1
+    echo "❌ soundness-cli still not found after install. Check PATH and try again."
+    exit 1
 fi
 
-# 🔐 Key generation
+# 🔐 Generate key
 echo ""
 read -p "📌 Enter a name for your key [default: my-key]: " KEY_NAME
 KEY_NAME=${KEY_NAME:-my-key}
 echo "🔐 Generating key with name: $KEY_NAME"
 soundness-cli generate-key --name "$KEY_NAME"
 
-# ✅ Check for local key_store.json
-KEY_PATH="./key_store.json"
+# 📂 Look for generated key path
+KEY_PATH="$HOME/.soundness/keys/$KEY_NAME/key_store.json"
 
 if [ ! -f "$KEY_PATH" ]; then
-    echo "❌ Error: key_store.json not found in current directory"
+    echo "❌ Error: key_store.json not found at expected location: $KEY_PATH"
     exit 1
 fi
 
-# 🌍 Ask to host content
+# 🌍 Ask to host
 echo ""
 read -p "🌐 Do you want to view key_store.json at http://localhost:8080? [y/N]: " HOST_CHOICE
 
@@ -76,14 +75,15 @@ if [[ "$HOST_CHOICE" == "y" || "$HOST_CHOICE" == "Y" ]]; then
     echo "🌐 Hosting key_store.json at: http://localhost:8080/key_store.json"
     echo "📋 You can open it in a browser or curl to copy it safely."
     echo "✅ Press CTRL+C after copying."
+    cd "$(dirname "$KEY_PATH")"
     python3 -m http.server 8080
 else
-    echo "✅ Skipped hosting. You can find your key at:"
+    echo "✅ Skipped hosting. Your key is saved here:"
     echo "$KEY_PATH"
 fi
 
 echo ""
 echo "🎉 Setup completed!"
-echo "🔑 To export private key later (not functional currently): soundness-cli export-key --name $KEY_NAME"
-echo "🛡️ Remember to backup your 24-word seed phrase and key_store.json safely."
+echo "🔑 To export private key (coming soon): soundness-cli export-key --name $KEY_NAME"
+echo "🛡️ Backup your 24-word seed phrase and key_store.json safely."
 echo "✨ Script by @admirkhen - https://twitter.com/admirkhen"
