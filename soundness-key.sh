@@ -48,11 +48,11 @@ KEY_NAME=${KEY_NAME:-my-key}
 echo "🔐 Generating key with name: $KEY_NAME"
 soundness-cli generate-key --name "$KEY_NAME"
 
-# ✅ Use correct local path (relative to where script is run)
-KEY_PATH="./keys/$KEY_NAME/key_store.json"
+# ✅ Check for local key_store.json
+KEY_PATH="./key_store.json"
 
 if [ ! -f "$KEY_PATH" ]; then
-    echo "❌ Error: Key file not found at $KEY_PATH"
+    echo "❌ Error: key_store.json not found in current directory"
     exit 1
 fi
 
@@ -61,8 +61,7 @@ echo ""
 read -p "🌐 Do you want to view key_store.json at http://localhost:8080? [y/N]: " HOST_CHOICE
 
 if [[ "$HOST_CHOICE" == "y" || "$HOST_CHOICE" == "Y" ]]; then
-    cd "$(dirname "$KEY_PATH")"
-    echo "🌐 Hosting key_store.json at: http://localhost:8080/$(basename "$KEY_PATH")"
+    echo "🌐 Hosting key_store.json at: http://localhost:8080/key_store.json"
     echo "📋 You can open it in a browser or curl to copy it safely."
     echo "✅ Press CTRL+C after copying."
     python3 -m http.server 8080
