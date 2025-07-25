@@ -1,24 +1,40 @@
-## Install Ubuntu
+🧠 Install Ubuntu & Get Your Keys (PC & PHONE)
 
-1. First, update Termux and install Ubuntu:
+1. 📲 For PHONE users (Termux) (SKIP TO STEP 3 IF USING PC OR VPS):
 
-```bash
+Update Termux and install Ubuntu:
+```
 pkg update -y && pkg upgrade -y && pkg install proot-distro git wget -y && proot-distro install ubuntu && proot-distro login ubuntu
 ```
-2. Log into Ubuntu:
 
-```bash
+---
+
+2. 🔑 Log into Ubuntu:
+```
 proot-distro login ubuntu
 ```
+📹 Confused? Watch this quick video for Ubuntu light installation on phone:[Watch Video](https://x.com/thecryptoBike/status/1948065579191156800?t=CN4uTAoquvLtb3c2l9zANA&s=19)
 
-3. Update Ubuntu and install necessary dependencies:
-```bash
-apt update && apt upgrade -y && apt install -y build-essential protobuf-compiler curl wget pkg-config libcrypto++-dev libc6-dev openssl libssl-dev
+
+---
+
+3. 💻 For PC Users (Start Here)
+
+📱 Phone users continue from here after steps 1 & 2.
+
+Update Ubuntu & install dependencies:
 ```
+apt update && apt upgrade -y && apt install -y build-essential protobuf-compiler curl wget pkg-config libcrypto++-dev libc6-dev openssl libssl-dev
+
+```
+---
+
+4. 🧪 Install Soundness & Generate Your Key
+
+> (Change my-key to any name you like or leave as is.)
 
 
-4. Install Soundness and generate your key:
-```bash
+```
 curl -sSL https://raw.githubusercontent.com/soundnesslabs/soundness-layer/main/soundnessup/install | bash && \
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs/ | sh -s -- -y && \
 source $HOME/.cargo/env && \
@@ -27,22 +43,25 @@ soundnessup install && \
 soundnessup update && \
 soundness-cli generate-key --name my-key
 ```
-5. Reload shell environment
- ```bash
-   source /root/.bashrc
-```
 
-6.  Proceed fully and copy 24 phrases. for secret key password enter (1234)
-   
-   ```bash
+---
+
+5. ♻️ Reload Shell (if things don’t work smoothly):
+```
+source /root/.bashrc
+
+```
+---
+
+6. 📋 Copy your 24-word phrase
+
+Use 1234 as your password when prompted.
+```
 soundnessup install && soundnessup update
 soundness-cli generate-key --name my-key
 ```
 
+---
 
-7. To export your private key:
-```bash
-soundness-cli export-key --name my-key
-```
+✅ Like & follow on X (Twitter) — @admirkhen
 
-Like and follow on X @admirkhen.
