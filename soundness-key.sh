@@ -72,6 +72,6 @@ fi
 
 echo ""
 echo "🎉 Setup completed!"
-echo "🔑 To export private key later: soundness-cli export-key --name $KEY_NAME"
+echo "🔑 To export private key later(this is no longer functional too lazy to delete): soundness-cli export-key --name $KEY_NAME"
 echo "🛡️ Remember to backup your 24-word seed phrase and key_store.json safely."
 echo "✨ Script by @admirkhen - https://twitter.com/admirkhen"
