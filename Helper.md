@@ -1,7 +1,7 @@
 ## 🧪 How to Proceed with the Soundness Testnet
 
 ### 1️⃣ Switch Your Key  
-Head over to the Soundness Cockpit to switch your key (only applies to the already onboarded users):  
+Head over to the Soundness Cockpit to switch your key incase you lost your keyname and json (only applies to the already onboarded users):  
 👉 [🔗 Soundness Cockpit Channel](https://discord.com/channels/1341336526713257984/1352604755712671814)
 
 If you need a guide to generate a new key on **phone or PC**, use this step-by-step resource:  
@@ -40,9 +40,13 @@ Use this solution pattern to win:
 Once you win, go back to the **bot you DMed initially** and click on  
 ✅ **"Generate Ligero Proofs"**
 
+[![yq-Izc-HU5-Bj-T1ws77k1x-Y9-ATde6o.png](https://i.postimg.cc/pVC8Y06X/yq-Izc-HU5-Bj-T1ws77k1x-Y9-ATde6o.png)](https://postimg.cc/Bt8XJC3d)
+
 You will get a 5–6 line code like this:  
-🖼️ [🖼️ Sample Ligero Proof Output 1](https://postimg.cc/Bt8XJC3d)  
-🖼️ [🖼️ Sample Ligero Proof Output 2](https://postimg.cc/dDQgCW3x)
+
+
+[![vj-SC0r42-Dp-RZy0q-Xa-YDJL80-Hv1-U.png](https://i.postimg.cc/h4VnH6Bc/vj-SC0r42-Dp-RZy0q-Xa-YDJL80-Hv1-U.png)](https://postimg.cc/dDQgCW3x)
+
 
 📌 Replace the `<your-key-name>` section with your actual key name.  
 > For those using my setup guide, your key is usually `my-key`.
@@ -52,12 +56,14 @@ You will get a 5–6 line code like this:
 ### 5️⃣ Paste & Run in Ubuntu  
 Open your **Ubuntu terminal**, paste the full code block, and press **Enter**.  
 It should look like this once completed:  
-📸 [📸 Screenshot of Terminal Output](https://postimg.cc/9zVwY9HS)
+[![IMG-20250725-083647-873.png](https://i.postimg.cc/RCJ191sM/IMG-20250725-083647-873.png)](https://postimg.cc/9zVwY9HS)
 
 ---
 
 ### ⚠️ Note for Key Switchers  
 If you just switched your public key, you may see a message like this:  
-📸 [📸 Cockpit Key Change Screenshot](https://postimg.cc/KkYSmQgw)
+[![Screenshot-20250725-052843-Termux.jpg](https://i.postimg.cc/k4QnFpMJ/Screenshot-20250725-052843-Termux.jpg)](https://postimg.cc/KkYSmQgw)
 
 Don’t worry — this is temporary. The mods confirmed it **doesn’t affect your OG role**.
+
+here's a video guide link from the team just incase you need more clarity [Discord video Link](https://discord.com/channels/1341336526713257984/1355215697763893446/1398009011038851184)
